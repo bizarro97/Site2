@@ -1,195 +1,151 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atlético Iguatamense</title>
-<style>
-  * { box-sizing: border-box; }
-  
-  body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #0000FF; /* Fundo Azul */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
-
-  /* Controle de Telas */
-  .tela {
-    display: none; 
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    padding: 20px;
-  }
-
-  .ativa { display: flex; }
-
-  /* --- TELA INICIAL --- */
-  .logo-principal {
-    width: 180px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-  }
-
-  .btn-iniciar {
-    background-color: white;
-    color: #0000FF;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-
-  .btn-iniciar:hover { transform: scale(1.05); }
-
-  /* --- TELA CARREGAMENTO --- */
-  .loader {
-    border: 6px solid rgba(255, 255, 255, 0.3);
-    border-top: 6px solid white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 15px;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  /* --- TELA DE JOGOS (CARD BRANCO) --- */
-  .card-jogos {
-    background-color: white;
-    color: #333;
-    padding: 25px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 450px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  }
-
-  .card-jogos h2 {
-    color: #0000FF;
-    margin-top: 0;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-  }
-
-  .linha-jogo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .linha-jogo:last-child { border-bottom: none; }
-
-  .escudo-pequeno { width: 35px; }
-
-  .confronto {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-weight: bold;
-    font-size: 0.95rem;
-  }
-
-  .adversario {
-    color: #d10000; /* Cor de destaque para o adversário */
-    text-transform: uppercase;
-  }
-
-  .data-jogo {
-    font-size: 0.8rem;
-    color: #777;
-    width: 80px;
-    text-align: right;
-  }
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Atlético Iguatamense - Site Oficial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #003366; /* Cor principal do clube */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        header img {
+            max-width: 120px;
+            height: auto;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #003366;
+            color: white;
+        }
+        .mascote-container {
+            text-align: center;
+        }
+        .mascote-container img {
+            max-width: 200px;
+        }
+    </style>
 </head>
 <body>
 
-  <div id="tela1" class="tela ativa">
-    <img src="https://i.postimg.cc/CMRw51k0/Clube-Atletico-Iguatamense.png" class="logo-principal">
-    <h1>Atlético Iguatamense</h1>
-    <button class="btn-iniciar" onclick="iniciarApp()">INICIAR</button>
-  </div>
+    <header>
+        <!-- Link do escudo que você enviou -->
+        <img src="https://i.postimg.cc/jj0FQPQS/CAI.png" alt="Escudo CAI">
+        <h1>Clube Atlético Iguatamense</h1>
+        <p>O Orgulho de Iguatama | Esporte Praticado: Futebol Profissional</p>
+    </header>
 
-  <div id="tela2" class="tela">
-    <div class="loader"></div>
-    <p>Buscando partidas...</p>
-  </div>
+    <nav>
+        <a href="#tabela">Tabela</a>
+        <a href="#partidas">Próximas Partidas</a>
+        <a href="#mascote">Nosso Mascote</a>
+    </nav>
 
-  <div id="tela3" class="tela">
-    <div class="card-jogos">
-      <h2>Próximos Jogos</h2>
+    <div class="container">
 
-      <div class="linha-jogo">
-        <img src="https://i.postimg.cc/CMRw51k0/Clube-Atletico-Iguatamense.png" class="escudo-pequeno">
-        <div class="confronto">
-          <span>ATLÉTICO</span>
-          <span>VS</span>
-          <div class="adversario">ROLANDIA</div> </div>
-        <div class="data-jogo">14/JUN</div>
-      </div>
+        <!-- SEÇÃO: TABELA DE CLASSIFICAÇÃO -->
+        <div id="tabela" class="section">
+            <h2>Campeonato Atual - Situação na Tabela</h2>
+            <p>Confira a posição do Atlético Iguatamense na competição:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Clube</th>
+                        <th>Pontos</th>
+                        <th>Jogos</th>
+                        <th>Vitórias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #e6f2ff; font-weight: bold;">
+                        <td>1º</td>
+                        <td>C.A. Iguatamense</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>2º</td>
+                        <td>Uberaba Futebol Clube</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3º</td>
+                        <td>Mito Sport Center</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-      <div class="linha-jogo">
-        <img src="https://i.postimg.cc/CMRw51k0/Clube-Atletico-Iguatamense.png" class="escudo-pequeno">
-        <div class="confronto">
-          <span>ATLÉTICO</span>
-          <span>VS</span>
-          <div class="adversario">A DEFINIR</div> </div>
-        <div class="data-jogo">27/JUL</div>
-      </div>
+        <!-- SEÇÃO: PRÓXIMAS PARTIDAS -->
+        <div id="partidas" class="section">
+            <h2>Próximas Partidas</h2>
+            <ul>
+                <li><strong>??/06/2026</strong> - ??:?? | <strong>C.A. Iguatamense</strong> x ??? (Estádio Estadual)</li>
+                <li><strong>??/06/2026</strong> - ??:?? | ??? x <strong>C.A. Iguatamense</strong> (Fora de Casa)</li>
+            </ul>
+        </div>
 
-      <div class="linha-jogo">
-        <img src="https://i.postimg.cc/CMRw51k0/Clube-Atletico-Iguatamense.png" class="escudo-pequeno">
-        <div class="confronto">
-          <span>ATLÉTICO</span>
-          <span>VS</span>
-          <div class="adversario">Mato-Grense</div> </div>
-        <div class="data-jogo">23/SET</div>
-      </div>
-
-      <div class="linha-jogo">
-        <img src="https://i.postimg.cc/CMRw51k0/Clube-Atletico-Iguatamense.png" class="escudo-pequeno">
-        <div class="confronto">
-          <span>ATLÉTICO</span>
-          <span>VS</span>
-          <div class="adversario">Federação B+ F</div> </div>
-        <div class="data-jogo">29/DEZ</div>
-      </div>
+        <!-- SEÇÃO: MASCOTE -->
+        <div id="mascote" class="section mascote-container">
+            <h2>Nosso Mascote Oficial</h2>
+            <!-- Link do mascote que você enviou -->
+            <img src="https://i.postimg.cc/WpgzS3W0/Caimascote.png" alt="Mascote do Atlético Iguatamense">
+            <p>Conheça o Galo que representa Iguatama</p>
+        </div>
 
     </div>
-  </div>
-
-  <script>
-    function iniciarApp() {
-      // Esconde Inicial e mostra Carregamento
-      document.getElementById('tela1').classList.remove('ativa');
-      document.getElementById('tela2').classList.add('ativa');
-
-      // Espera 2 segundos e mostra os Jogos
-      setTimeout(() => {
-        document.getElementById('tela2').classList.remove('ativa');
-        document.getElementById('tela3').classList.add('ativa');
-      }, 2000);
-    }
-  </script>
 
 </body>
 </html>
